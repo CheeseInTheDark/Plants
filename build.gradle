@@ -1,0 +1,42 @@
+apply plugin: 'application'
+apply plugin: 'eclipse'
+apply plugin: 'java'
+
+repositories
+{
+	mavenCentral()
+	maven
+	{
+		url "http://jmlproductions.net/artifacts"
+	}
+}
+
+dependencies
+{
+	compile 'net.jmlproductions:fifty-loops:latest'
+
+	testCompile 'org.hamcrest:hamcrest-all:1.3'
+	testCompile 'org.mockito:mockito-all:1.9.+'
+	testCompile 'junit:junit:4.11'
+	testCompile 'net.jmlproductions:testing-tools:latest'
+}
+
+jar
+{
+	from ('.')
+	{
+		include('images/**')	
+	}
+
+	from(".")
+	{
+		include("classes/**")	
+	}
+
+    	manifest
+	{
+        	attributes 'Main-Class': 'net.jmlproductions.plants.Plants'
+    	}
+}
+
+mainClassName = "net.jmlproductions.plants.Plants"
